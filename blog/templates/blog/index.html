@@ -1,4 +1,8 @@
-<title> Resebloggen! </title>
+{% extends 'base.html'%}
+
+{% block title %} Resebloggen! {% endblock %}
+
+{% block content %}
 
 {% if latest_post_list %}
     {% for post in latest_post_list %}
@@ -7,5 +11,7 @@
 {% else %}
     <p> Inga inlägg finns publicerade ännu. </p>
 {% endif %}
+
+{% endblock %}
 
 
