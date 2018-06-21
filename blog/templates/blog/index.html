@@ -1,1 +1,9 @@
-<h1> Welcome to our travel blog! </h1>
+<title> Resebloggen! </title>
+
+{% if latest_post_list %}
+    {% for post in latest_post_list %}
+    <p> {{ post.formatted_markdown|safe }} </p>
+    {% endfor %}
+{% else %}
+    <p> Inga inlägg finns publicerade ännu. </p>
+{% endif %}
