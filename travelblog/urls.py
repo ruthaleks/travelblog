@@ -19,5 +19,6 @@ from django.urls import path, include, re_path
 urlpatterns = [
     path('travelblog/', include('blog.urls')),
     path('admin/', admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),
     re_path(r'^markdownx/', include('markdownx.urls')),
 ]
