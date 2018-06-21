@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
 from .models import Post
+from .forms import NewPostForm
 
 
 def index(request):
@@ -14,4 +15,7 @@ def gallery(request):
 
 
 def new(request):
-    raise NotImplementedError()
+    post_form = NewPostForm()
+    context = {'post_form': post_form}
+    template = 'blog/new.html'
+    return render(request, template, context)
