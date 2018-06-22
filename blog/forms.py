@@ -8,7 +8,7 @@ class NewPostForm(forms.ModelForm):
         model = Post
         fields = ['title', 'travel_date', 'post_content']
         labels = {
-            'title': 'Rubrik', 'travel_date': 'Resedatum', 'post_content': ''}
+            'title': 'Titel', 'travel_date': 'Resedatum', 'post_content': ''}
         widgets = {
             'post_content': MarkdownxFormField(),
             'travel_date': forms.SelectDateWidget(),

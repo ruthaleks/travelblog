@@ -129,6 +129,9 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = 'media/'
 MEDIA_URL = '/media/'
 
+# Date format
+DATE_FORMAT = "Y-m-d"
+
 # Markdownx image storage
 MARKDOWNX_MEDIA_PATH = datetime.now().strftime('/markdownx/%Y/%m/%d')
 

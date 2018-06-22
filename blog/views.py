@@ -14,6 +14,7 @@ from datetime import datetime
 
 def index(request):
     latest_post_list = Post.objects.order_by('-travel_date')[:5]
+    posts = Post.objects.order_by('-travel_date').all()
     if request.method == 'POST':
         post_author = request.user
         post = Post(author=post_author)
@@ -24,7 +25,9 @@ def index(request):
             return redirect('blog:index')
     post_form = NewPostForm()
     context = {'post_form': post_form,
-               'latest_post_list': latest_post_list}
+               'latest_post_list': latest_post_list,
+               'posts': posts,
+               }
     template = 'blog/index.html'
 
     return render(request, template, context)

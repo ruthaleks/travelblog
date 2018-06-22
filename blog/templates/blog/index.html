@@ -14,9 +14,20 @@
 {{ post_form.media }}
 {% endif %}
 
-{% if latest_post_list %}
-    {% for post in latest_post_list %}
-    <p> {{ post.formatted_markdown|safe }} </p>
+{% if posts %}
+{% for post in posts %}
+<article>
+    <div class="title-box">
+        <p class="title">{{post.title}}</p>
+    </div>
+    <div class="content-box">
+        {{ post.formatted_markdown|safe }}
+        <div class="sign">
+            <p> {{ post.author.first_name }} {{post.author.last_name}}
+            <br /> {{ post.pub_date.date | date:"Y-m-d"}} </p>
+        </div>
+    </div>
+</article>
     {% endfor %}
 {% else %}
     <p> Inga inlägg finns publicerade ännu. </p>

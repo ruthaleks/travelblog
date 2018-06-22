@@ -1,4 +1,37 @@
 body {
-    background-color: aliceblue;
+    background-color: #A67A57;
+    color: #4B493C;
+    font-family: Helvetica, sans-serif;
 }
+
+article {
+    background-color: #ECD0AE;
+    margin: 12px 12px;
+    padding: 0;
+    font-family: "Monda", sans-serif;
+    border-radius: 5px;
+}
+
+.title-box{
+    background-color: #4B493C;
+    margin: 0;
+    padding: 0;
+    width: 50%;
+    min-height: 30px;
+    color: #E9E0CF;
+    text-align: center;
+    border-bottom-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.content-box{
+    padding: 12px;
+}
+
+.sign {
+    font-family: "Satisfy", cursive;
+    text-align: right;
+}
+
+
 
