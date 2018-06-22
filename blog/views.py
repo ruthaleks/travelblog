@@ -27,6 +27,7 @@ def index(request):
     context = {'post_form': post_form,
                'latest_post_list': latest_post_list,
                'posts': posts,
+               'today': datetime.today(),
                }
     template = 'blog/index.html'
 

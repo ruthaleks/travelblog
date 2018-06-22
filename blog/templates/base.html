@@ -12,9 +12,17 @@
     </head>
 
     <body>
-        <header>
-            <h1> Dat amazing travel blog </h1>
-            <p> Loggad in som {{ user }} </p>
+        <header id="head">
+            <br /><br />
+            <h1> EXPEDITION TÅGLUFF</h1>
+            {% if user.is_authenticated %}
+            <div class="sign space">
+                <p> {{ user.first_name }} {{user.last_name}}
+                <br /> {{ today | date:"Y-m-d"}} </p>
+            </div>
+            {% else %}
+            <br /><br />
+            {% endif %}
         </header>
 
         <nav>
@@ -32,9 +40,12 @@
         {% block content %}
         {% endblock %}
 
+        <br />
+        <br />
         <footer>
-            <p>Copyright &copy; Ruth Aleksandrauskaite</p>
-            <p>Supported by Mårten Nilsson</p>
+            <br /><br /><br /><br />
+            <p>Copyright &copy; Ruth Aleksandrauskaite &amp; Mårten Nilsson</p>
+            <br />
         </footer>
 
     </body>
