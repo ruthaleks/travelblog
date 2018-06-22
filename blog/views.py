@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.conf import settings
 
 from .models import Post
+from .forms import NewPostForm
 
 import os
 import glob
@@ -27,6 +28,7 @@ def _get_images_ending_with(extension):
 
 
 def new(request):
-    raise NotImplementedError()
-
-
+    post_form = NewPostForm()
+    context = {'post_form': post_form}
+    template = 'blog/new.html'
+    return render(request, template, context)
