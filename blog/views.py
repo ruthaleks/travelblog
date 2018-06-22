@@ -14,8 +14,20 @@ from datetime import datetime
 
 def index(request):
     latest_post_list = Post.objects.order_by('-travel_date')[:5]
-    context = {'latest_post_list': latest_post_list}
-    return render(request, 'blog/index.html', context)
+    if request.method == 'POST':
+        post_author = request.user
+        post = Post(author=post_author)
+        form_data = NewPostForm(request.POST, instance=post)
+        if form_data.is_valid():
+            form_data.clean()
+            form_data.save()
+            return redirect('blog:index')
+    post_form = NewPostForm()
+    context = {'post_form': post_form,
+               'latest_post_list': latest_post_list}
+    template = 'blog/index.html'
+
+    return render(request, template, context)
 
 
 def gallery(request):
@@ -47,8 +59,8 @@ def _get_images_ending_with(extension):
 
 
 def _save_uploaded_image(f):
-    """ 
-    Saves the uploaded file f in the designated folder. 
+    """
+    Saves the uploaded file f in the designated folder.
     Creates this folder if necessary,
     """
 
@@ -84,17 +96,3 @@ def _make_path(filename):
                 raise 
 
 
-def new(request):
-    if request.method == 'POST':
-        post_author = request.user
-        post = Post(author=post_author)
-        form_data = NewPostForm(request.POST, instance=post)
-        if form_data.is_valid():
-            form_data.clean()
-            form_data.save()
-            return redirect('blog:index')
-    else:
-        post_form = NewPostForm()
-        context = {'post_form': post_form}
-        template = 'blog/new.html'
-    return render(request, template, context)

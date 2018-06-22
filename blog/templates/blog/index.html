@@ -3,6 +3,16 @@
 {% block title %} Resebloggen! {% endblock %}
 
 {% block content %}
+{% if user.is_authenticated %}
+
+
+<form method="POST" action=""> {% csrf_token %}
+    {{ post_form }}
+    <input type="submit" value="Spara">
+</form>
+
+{{ post_form.media }}
+{% endif %}
 
 {% if latest_post_list %}
     {% for post in latest_post_list %}
