@@ -9,7 +9,7 @@ class Post(models.Model):
     title = models.CharField(max_length=200)
     post_content = MarkdownxField()
     pub_date = models.DateTimeField('Post published', default=timezone.now)
-    travel_date = models.DateTimeField('Post travel date')
+    travel_date = models.DateField('Post travel date', default=timezone.now)
     last_edited = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.PROTECT)
 
