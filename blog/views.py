@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.conf import settings
 
 from .models import Post
@@ -22,7 +22,8 @@ def gallery(request):
         _save_uploaded_image(f)
 
     images = _get_images_ending_with(".jpg") + _get_images_ending_with(".png")
-    images = [i.replace(settings.MEDIA_ROOT, settings.MEDIA_URL, 1) for i in images]
+    images = [i.replace(settings.MEDIA_ROOT, settings.MEDIA_URL, 1)
+              for i in images]
     context = {
             "images": images,
             "upload_form": ImageUploadForm(),
@@ -31,7 +32,8 @@ def gallery(request):
 
 
 def _get_images_ending_with(extension):
-    return glob.glob( os.path.join(settings.MEDIA_ROOT, "markdownx", "*", "*", "*", "*" + extension ) )
+    return glob.glob(os.path.join(
+        settings.MEDIA_ROOT, "markdownx", "*", "*", "*", "*" + extension))
 
 
 def _save_uploaded_image(f):
@@ -58,7 +60,16 @@ def _save_uploaded_image(f):
 
 
 def new(request):
-    post_form = NewPostForm()
-    context = {'post_form': post_form}
-    template = 'blog/new.html'
+    if request.method == 'POST':
+        post_author = request.user
+        post = Post(author=post_author)
+        form_data = NewPostForm(request.POST, instance=post)
+        if form_data.is_valid():
+            form_data.clean()
+            form_data.save()
+            return redirect('blog:index')
+    else:
+        post_form = NewPostForm()
+        context = {'post_form': post_form}
+        template = 'blog/new.html'
     return render(request, template, context)
