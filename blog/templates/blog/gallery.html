@@ -6,6 +6,13 @@
 
 <p> Halloj! </p>
 
+{% if user.is_authenticated %}
+<form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
+{{ upload_form }}
+<input type="submit" value="submit" />
+</form>
+{% endif %}
+
 {% for image in images %}
 <p> En bild: {{ image }} </p>
 <img src={{image}}/>

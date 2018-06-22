@@ -13,3 +13,6 @@ class NewPostForm(forms.ModelForm):
             'post_content': MarkdownxFormField(),
             'travel_date': forms.SelectDateWidget(),
         }
+
+class ImageUploadForm(forms.Form):
+    file = forms.FileField()
