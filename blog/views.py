@@ -42,7 +42,7 @@ def gallery(request):
     images = [i.replace(settings.MEDIA_ROOT, settings.MEDIA_URL, 1)
             for i in images]
 
-    images = [i.replace("markdownx", "thumbnails", 1)
+    images = [(i.replace("markdownx", "thumbnails", 1), i)
             for i in images]
 
     context = {
