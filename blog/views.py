@@ -25,8 +25,8 @@ def gallery(request):
 
 
 def _get_images_ending_with(extension):
-    return glob.glob(os.path.join(settings.MEDIA_ROOT,
-                                  "markdownx", "*", "*", "*", "*" + extension))
+    return glob.glob(os.path.join(
+        settings.MEDIA_ROOT, "markdownx", "*", "*", "*", "*" + extension))
 
 
 def new(request):
