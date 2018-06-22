@@ -132,3 +132,7 @@ MEDIA_URL = '/media/'
 
 # Markdownx image storage
 MARKDOWNX_MEDIA_PATH = datetime.now().strftime('/markdownx/%Y/%m/%d')
+
+# Login redirect
+LOGIN_REDIRECT_URL = '/travelblog/'
+LOGOUT_REDIRECT_URL = '/travelblog/'
