@@ -1,7 +1,11 @@
 from django.shortcuts import render
+from django.conf import settings
 
 from .models import Post
 from .forms import NewPostForm
+
+import os
+import glob
 
 
 def index(request):
@@ -11,7 +15,16 @@ def index(request):
 
 
 def gallery(request):
-    raise NotImplementedError()
+    images = _get_images_ending_with(".jpg") + _get_images_ending_with(".png")
+    images = [i.replace(settings.MEDIA_ROOT, settings.MEDIA_URL, 1) for i in images]
+    context = {
+            "images": images,
+            }
+    return render(request, 'blog/gallery.html', context)
+
+
+def _get_images_ending_with(extension):
+    return glob.glob( os.path.join(settings.MEDIA_ROOT, "markdownx", "*", "*", "*", "*" + extension ) )
 
 
 def new(request):

@@ -1,0 +1,16 @@
+{% extends 'base.html'%}
+
+{% block title %} Bildgalleri {% endblock %}
+
+{% block content %}
+
+<p> Halloj! </p>
+
+{% for image in images %}
+<p> En bild: {{ image }} </p>
+<img src={{image}}/>
+{% endfor %}
+
+{% endblock %}
+
+
