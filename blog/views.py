@@ -42,4 +42,4 @@ def new(request):
         post_form = NewPostForm()
         context = {'post_form': post_form}
         template = 'blog/new.html'
-        return render(request, template, context)
+    return render(request, template, context)
