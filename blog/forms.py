@@ -14,5 +14,12 @@ class NewPostForm(forms.ModelForm):
             'travel_date': forms.SelectDateWidget(),
         }
 
+
+class DeletePost(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = []
+
+
 class ImageUploadForm(forms.Form):
     file = forms.FileField()
