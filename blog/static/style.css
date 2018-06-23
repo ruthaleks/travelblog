@@ -4,7 +4,6 @@ body {
     font-family: Helvetica, sans-serif;
     margin: 0;
     padding: 0;
-
     font-size: larger;
 }
 
@@ -53,8 +52,33 @@ footer, header {
 }
 
 nav {
+    text-align: center;
     background-color: #D59059;
+    margin: auto;
+    padding: 0px 0px;
+    overflow: auto;
+}
+
+.center-container {
+    display: grid;
+    grid: 40px / auto auto auto;
+}
+
+nav a{
+    display: inline-grid;
+    text-align: center;
+    text-decoration: none;
+    color: #4B493C;
     margin: 0px 0px;
+    background-color: #D59059;
+    display: block;
+}
+
+
+nav a:hover {
+    color: #E9E0CF;
+    background-color: #A67A57;
+    transition-duration: 0.3s;
 }
 
 #head {

@@ -26,16 +26,15 @@
         </header>
 
         <nav>
-            <br />
-            <ul>
-                <li><a href="{% url 'blog:index' %}">Startsida</a></li>
-                <li><a href="{% url 'blog:gallery' %}">Galleri</a></li>
+            <div class="center-container">
+                <a href="{% url 'blog:index' %}">Startsida</a>
+                <a href="{% url 'blog:gallery' %}">Galleri</a>
                 {% if user.is_authenticated %}
-                <li><a href="{% url 'logout' %}">Logga ut</a></li>
+                <a href="{% url 'logout' %}">Logga ut</a>
                 {% else %}
-                <li><a href="{% url 'login' %}">Logga in</a></li>
+                <a href="{% url 'login' %}">Logga in</a>
                 {% endif %}
-            </ul>
+            </div>
         </nav>
 
         {% block content %}
