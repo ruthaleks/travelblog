@@ -13,9 +13,9 @@
 </form>
 {% endif %}
 
-{% for image in images %}
+{% for thumb, img in images %}
 <p> En bild: {{ image }} </p>
-<img src={{image}}/>
+<a target="_blank" href="{{ img }}"><img src={{thumb}}/></a>
 {% endfor %}
 
 {% endblock %}

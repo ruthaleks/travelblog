@@ -1,10 +1,10 @@
 from PIL import Image
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.conf import settings
 
 from .models import Post
-from .forms import NewPostForm, ImageUploadForm
+from .forms import NewPostForm, ImageUploadForm, DeletePost
 
 import os
 import glob
@@ -14,6 +14,7 @@ from datetime import datetime
 
 def index(request):
     latest_post_list = Post.objects.order_by('-travel_date')[:5]
+    posts = Post.objects.order_by('-travel_date').all()
     if request.method == 'POST':
         post_author = request.user
         post = Post(author=post_author)
@@ -23,11 +24,22 @@ def index(request):
             form_data.save()
             return redirect('blog:index')
     post_form = NewPostForm()
+    del_post = DeletePost()
     context = {'post_form': post_form,
-               'latest_post_list': latest_post_list}
+               'latest_post_list': latest_post_list,
+               'posts': posts,
+               'today': datetime.today(),
+               'del_post': del_post,
+               }
     template = 'blog/index.html'
 
     return render(request, template, context)
+
+
+def delete(request, pk):
+    del_post = get_object_or_404(Post, pk=pk)
+    del_post.delete()
+    return redirect('blog:index')
 
 
 def gallery(request):
@@ -40,10 +52,10 @@ def gallery(request):
     _generate_thumbnails(images)
 
     images = [i.replace(settings.MEDIA_ROOT, settings.MEDIA_URL, 1)
-            for i in images]
+              for i in images]
 
-    images = [i.replace("markdownx", "thumbnails", 1)
-            for i in images]
+    images = [(i.replace("markdownx", "thumbnails", 1), i)
+              for i in images]
 
     context = {
             "images": images,
@@ -65,9 +77,11 @@ def _save_uploaded_image(f):
     """
 
     # First update timestamp for media
-    settings.MARKDOWNX_MEDIA_PATH = datetime.now().strftime('/markdownx/%Y/%m/%d')
+    settings.MARKDOWNX_MEDIA_PATH = datetime.now().strftime(
+        '/markdownx/%Y/%m/%d')
 
-    full_name = os.path.join(settings.MEDIA_ROOT, settings.MARKDOWNX_MEDIA_PATH[1:], f.name)
+    full_name = os.path.join(settings.MEDIA_ROOT,
+                             settings.MARKDOWNX_MEDIA_PATH[1:], f.name)
 
     _make_path(full_name)
 
@@ -91,8 +105,6 @@ def _make_path(filename):
     if not os.path.exists(os.path.dirname(filename)):
         try:
             os.makedirs(os.path.dirname(filename))
-        except OSError as exc: # Guard against race condition
+        except OSError as exc:  # Guard against race condition
             if exc.errno != errno.EEXIST:
-                raise 
-
-
+                raise
