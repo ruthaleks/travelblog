@@ -5,11 +5,12 @@
 {% block content %}
 {% if user.is_authenticated %}
 
-
-<form method="POST" action=""> {% csrf_token %}
-    {{ post_form }}
-    <input type="submit" value="Spara">
-</form>
+<div id="newpost">
+    <form method="POST" action=""> {% csrf_token %}
+        {{ post_form.as_p }}
+        <input type="submit" value="Spara" class="button">
+    </form>
+</div>
 
 {{ post_form.media }}
 {% endif %}
@@ -22,9 +23,13 @@
     </div>
     <div class="content-box">
         {{ post.formatted_markdown|safe }}
+
+        {% if user.is_authenticated %}
         <form method='POST', action="{% url 'blog:delete' post.pk %}" >{% csrf_token %}
             {{ del_form }}
-        <input type="submit", value="Ta bort" >
+        <input type="submit", value="Ta bort" class="button">
+        {% endif %}
+
         </form>
         <div class="sign">
             <p> {{ post.author.first_name }} {{post.author.last_name}}

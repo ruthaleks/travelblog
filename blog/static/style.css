@@ -16,6 +16,13 @@ article {
     box-shadow: 2px 2px 5px 5px #7E5D38;
 }
 
+#head {
+    font-size: x-large;
+    background-image: url("globe.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: bottom;
+}
 
 .title-box{
     background-color: #4B493C;
@@ -53,15 +60,16 @@ footer, header {
 
 nav {
     text-align: center;
-    background-color: #D59059;
+    background-color: #A1A068;
     margin: auto;
     padding: 0px 0px;
     overflow: auto;
+    box-shadow: 0px 2px 2px 2px #7E5D38;
 }
 
 .center-container {
     display: grid;
-    grid: 40px / auto auto auto;
+    grid: 50px / auto auto auto;
 }
 
 nav a{
@@ -70,10 +78,10 @@ nav a{
     text-decoration: none;
     color: #4B493C;
     margin: 0px 0px;
+    padding: 5px 5px;
     background-color: #D59059;
     display: block;
 }
-
 
 nav a:hover {
     color: #E9E0CF;
@@ -81,12 +89,55 @@ nav a:hover {
     transition-duration: 0.3s;
 }
 
-#head {
-    font-size: x-large;
-    background-image: url("globe.jpg");
-    background-size: 100%;
-    background-repeat: no-repeat;
-    background-position: bottom;
+#newpost {
+    background-color: #ECD0AE;
+    margin: auto;
+    padding: 0;
+    font-family: "Monda", sans-serif;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px 5px #7E5D38;
+}
+
+#id_title {
+    border: none;
+    background-color: #4B493C;
+    color: #E9E0CF;
+    margin: 0;
+    padding: 0;
+    width: 50%;
+    min-height: 30px;
+    text-align: center;
+    border-bottom-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+#id_post_content {
+    font-size: larger;
+    padding: 10px;
+    background-color: #ECD0AE;
+    width: 100%;
+    border: none;
+    border-top: 10px dotted #4B493C;
+    border-bottom: 10px dotted #4B493C;
+    overflow: auto;
+}
+
+select, .button{
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    font-size: large;
+    background-color: #4B493C;
+    color: #E9E0CF;
+    cursor: pointer;
+    border: none;
+    padding: 8px 12px;
+    margin: 8px 12px;
+}
+
+.button:hover, select:hover{
+    color: #4B493C;
+    background-color: #E9E0CF;
+    transition-duration: 0.3s;
 }
 
 #head h1 {
@@ -96,14 +147,14 @@ nav a:hover {
 
 
 @media only screen and (min-width: 1024px) {
-    article {
+    article, #newpost {
         max-width: 80%;
         margin: auto;
     }
 }
 
 @media only screen and (min-width: 1600px) {
-    article {
+    article, #newpost {
         max-width: 60%;
         margin: auto;
     }

@@ -6,9 +6,9 @@ from .models import Post
 class NewPostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['title', 'travel_date', 'post_content']
+        fields = ['title', 'post_content', 'travel_date']
         labels = {
-            'title': 'Titel', 'travel_date': 'Resedatum', 'post_content': ''}
+            'title': '', 'travel_date': '', 'post_content': ''}
         widgets = {
             'post_content': MarkdownxFormField(),
             'travel_date': forms.SelectDateWidget(),
