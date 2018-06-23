@@ -22,4 +22,4 @@ class DeletePost(forms.ModelForm):
 
 
 class ImageUploadForm(forms.Form):
-    file = forms.FileField()
+    file = forms.FileField(label="")

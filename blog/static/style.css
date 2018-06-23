@@ -7,15 +7,7 @@ body {
     font-size: larger;
 }
 
-article {
-    background-color: #ECD0AE;
-    margin: 12px 12px;
-    padding: 0;
-    font-family: "Monda", sans-serif;
-    border-radius: 5px;
-    box-shadow: 2px 2px 5px 5px #7E5D38;
-}
-
+/* Base styling ---------------------------------------------------------- */
 #head {
     font-size: x-large;
     background-image: url("globe.jpg");
@@ -24,30 +16,9 @@ article {
     background-position: bottom;
 }
 
-.title-box{
-    background-color: #4B493C;
-    margin: 0;
-    padding: 0;
-    width: 50%;
-    min-height: 30px;
-    color: #E9E0CF;
-    text-align: center;
-    border-bottom-right-radius: 5px;
-    border-top-left-radius: 5px;
-}
-
-.content-box{
-    padding: 12px 36px;
-}
-
-.sign {
-    font-family: "Satisfy", cursive;
-    text-align: right;
-}
-
-.space {
-    margin: 20px;
-    padding: 5px;
+#head h1 {
+    color: #4B493C;
+    text-shadow: -2px -1px white;
 }
 
 footer, header {
@@ -89,13 +60,42 @@ nav a:hover {
     transition-duration: 0.3s;
 }
 
-#newpost {
+/* Index page styling ---------------------------------------------------------- */
+
+article, #newpost {
     background-color: #ECD0AE;
-    margin: auto;
+    margin: 12px 12px;
     padding: 0;
     font-family: "Monda", sans-serif;
     border-radius: 5px;
     box-shadow: 2px 2px 5px 5px #7E5D38;
+}
+
+.title-box{
+    background-color: #4B493C;
+    margin: 0;
+    padding: 0;
+    width: 50%;
+    min-height: 30px;
+    color: #E9E0CF;
+    text-align: center;
+    border-bottom-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.content-box{
+    padding: 12px 36px;
+    overflow: auto;
+}
+
+.sign {
+    font-family: "Satisfy", cursive;
+    text-align: right;
+}
+
+.space {
+    margin: 20px;
+    padding: 5px;
 }
 
 #id_title {
@@ -122,6 +122,7 @@ nav a:hover {
     overflow: auto;
 }
 
+
 select, .button{
     -moz-appearance: none;
     -webkit-appearance: none;
@@ -140,11 +141,27 @@ select, .button{
     transition-duration: 0.3s;
 }
 
-#head h1 {
-    color: #4B493C;
-    text-shadow: -2px -1px white;
+
+/* Gallery styling ---------------------------------------------------------- */
+#upload-image {
+    width: 80%;
+    margin: auto;
 }
 
+.image-box img{
+    height: 100px;
+    float: left;
+    box-sizing: border-box;
+    margin: 4px 4px;
+    transition: all 0.3s;
+}
+
+.image-box img:hover {
+    transform: scale(1.28);
+    transition: all 0.3s;
+}
+
+/* Responsive design -------------------------------------------*/
 
 @media only screen and (min-width: 1024px) {
     article, #newpost {

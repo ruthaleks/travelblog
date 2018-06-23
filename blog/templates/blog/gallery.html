@@ -4,19 +4,44 @@
 
 {% block content %}
 
-<p> Halloj! </p>
-
+<br />
 {% if user.is_authenticated %}
-<form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
-{{ upload_form }}
-<input type="submit" value="submit" />
-</form>
+<article>
+    <div class="title-box">
+        <p class="title">Ny bild</p>
+    </div>
+    <br />
+    <div id="upload-image">
+        <form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
+            <label class="button">Välj bild
+                <input type="file" name="file" required id="id_file" hidden />
+            </label>
+            <label class="button">
+                Ladda upp bild
+                <input type="submit" value="Ladda upp bild" hidden/>
+            </label> 
+        </form>
+    </div>
+    <br />
+</article>
 {% endif %}
 
-{% for thumb, img in images %}
-<p> En bild: {{ image }} </p>
-<a target="_blank" href="{{ img }}"><img src={{thumb}}/></a>
-{% endfor %}
+<br />
+<article>
+    <div class="title-box">
+        <p class="title">Bildgalleri</p>
+    </div>
+    <div class="content-box">
+        {% for thumb, img in images %}
+        <div class="image-box">
+            <a target="_blank" href="{{ img }}"><img src={{thumb}}/></a>
+        </div>
+        {% endfor %}
+    </div>
+    <br/>
+    <br/>
+</article>
+
 
 {% endblock %}
 
