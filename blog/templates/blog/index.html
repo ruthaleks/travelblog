@@ -22,6 +22,7 @@
     </div>
     <div class="content-box">
         {{ post.formatted_markdown|safe }}
+        <a href="{% url 'blog:delete' post.pk %}" >Ta bort</a>
         <div class="sign">
             <p> {{ post.author.first_name }} {{post.author.last_name}}
             <br /> {{ post.pub_date.date | date:"Y-m-d"}} </p>

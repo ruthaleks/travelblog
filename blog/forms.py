@@ -14,5 +14,6 @@ class NewPostForm(forms.ModelForm):
             'travel_date': forms.SelectDateWidget(),
         }
 
+
 class ImageUploadForm(forms.Form):
     file = forms.FileField()
