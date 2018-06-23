@@ -45,11 +45,16 @@ article {
 }
 
 footer, header {
-    margin: 0;
+    margin: 0px 0px;
     background-color: black;
     color: #E9E0CF;
     text-align: center;
     width: 100%;
+}
+
+nav {
+    background-color: #D59059;
+    margin: 0px 0px;
 }
 
 #head {
