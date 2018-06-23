@@ -15,5 +15,11 @@ class NewPostForm(forms.ModelForm):
         }
 
 
+class DeletePost(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = []
+
+
 class ImageUploadForm(forms.Form):
     file = forms.FileField()
