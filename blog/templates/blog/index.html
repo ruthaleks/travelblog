@@ -22,7 +22,10 @@
     </div>
     <div class="content-box">
         {{ post.formatted_markdown|safe }}
-        <a href="{% url 'blog:delete' post.pk %}" >Ta bort</a>
+        <form method='POST', action="{% url 'blog:delete' post.pk %}" >{% csrf_token %}
+            {{ del_form }}
+        <input type="submit", value="Ta bort" >
+        </form>
         <div class="sign">
             <p> {{ post.author.first_name }} {{post.author.last_name}}
             <br /> {{ post.pub_date.date | date:"Y-m-d"}} </p>

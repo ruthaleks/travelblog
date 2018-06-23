@@ -38,7 +38,8 @@ def index(request):
 
 def delete(request, pk):
     del_post = get_object_or_404(Post, pk=pk)
-    del_post.delete()
+    if request.method == "POST":
+        del_post.delete()
     return redirect('blog:index')
 
 
