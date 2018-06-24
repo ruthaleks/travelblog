@@ -25,12 +25,9 @@
         {{ post.formatted_markdown|safe }}
 
         {% if user.is_authenticated %}
-        <form method='POST', action="{% url 'blog:delete' post.pk %}" >{% csrf_token %}
-            {{ del_form }}
-        <input type="submit", value="Ta bort" class="button">
-        {% endif %}
-
+        <a href = "{% url 'blog:update' post.pk %}">Uppdatera</a>
         </form>
+        {% endif %}
         <div class="sign">
             <p> {{ post.author.first_name }} {{post.author.last_name}}
             <br /> {{ post.pub_date.date | date:"Y-m-d"}} </p>

@@ -2,6 +2,7 @@ from PIL import Image
 
 from django.shortcuts import render, redirect, get_object_or_404
 from django.conf import settings
+from django.utils import timezone
 
 from .models import Post
 from .forms import NewPostForm, ImageUploadForm, DeletePost
@@ -32,6 +33,24 @@ def index(request):
                'del_post': del_post,
                }
     template = 'blog/index.html'
+
+    return render(request, template, context)
+
+
+def update(request, pk):
+    up_post = get_object_or_404(Post, pk=pk)
+    update_form = NewPostForm(instance=up_post)
+    del_post = DeletePost()
+    context = {'update_form': update_form, 'del_post': del_post,
+               'post': up_post, }
+    template = 'blog/update.html'
+    if request.method == 'POST':
+        up_post.last_edited = timezone.now()
+        update_form = NewPostForm(request.POST, instance=up_post)
+        if update_form.is_valid():
+            update_form.clean()
+            update_form.save()
+            return redirect('blog:index')
 
     return render(request, template, context)
 

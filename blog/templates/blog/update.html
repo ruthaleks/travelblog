@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+
+{% block title %} Uppdatera inlägg {% endblock %}
+
+{% block content %}
+<article>
+<div class"content-box">
+<form method="POST" action="">{% csrf_token %}
+    {{ update_form }}
+    </br>
+    </br>
+    <input type="submit" value= "Spara" class="button">
+    <form method='POST', action="{% url 'blog:delete' post.pk %}" >{% csrf_token %}
+        {{ del_form }}
+    <input type="submit" value="Ta bort" class="button">
+    </form>
+</form>
+    {{ update_form.media }}
+
+</div>
+</article>
+{% endblock %}
