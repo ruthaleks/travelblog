@@ -161,6 +161,18 @@ select, input[type=submit]{
     padding: 4px 12px;
 }
 
+#pages{
+    width: 50%;
+    list-style-type: none;
+    margin: auto;
+    padding: 4px 12px;
+}
+
+#pages li{
+    box-sizing: border-box;
+    float: left;
+}
+
 /* Gallery styling ---------------------------------------------------------- */
 #upload-image {
     width: 80%;
@@ -178,6 +190,19 @@ select, input[type=submit]{
 .image-box img:hover {
     transform: scale(1.28);
     transition: all 0.3s;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* Login form */
+#login {
+    padding: 12px 25%;
+}
+
+#login input {
+    width: 100%;
 }
 
 /* Responsive design -------------------------------------------*/

@@ -3,6 +3,7 @@ from PIL import Image
 from django.shortcuts import render, redirect, get_object_or_404
 from django.conf import settings
 from django.utils import timezone
+from django.contrib.auth.decorators import login_required
 
 from .models import Post
 from .forms import NewPostForm, ImageUploadForm, DeletePost
@@ -10,12 +11,14 @@ from .forms import NewPostForm, ImageUploadForm, DeletePost
 import os
 import glob
 import errno
+import math
 from datetime import datetime
 
 
-def index(request):
-    latest_post_list = Post.objects.order_by('-travel_date')[:5]
-    posts = Post.objects.order_by('-travel_date').all()
+def index(request, page_number=0):
+    ppp = 5;
+    posts = Post.objects.order_by('-travel_date')[page_number*ppp:(page_number + 1)*ppp]
+    l = Post.objects.all().count()
     if request.method == 'POST':
         post_author = request.user
         post = Post(author=post_author)
@@ -27,16 +30,17 @@ def index(request):
     post_form = NewPostForm()
     del_post = DeletePost()
     context = {'post_form': post_form,
-               'latest_post_list': latest_post_list,
                'posts': posts,
                'today': datetime.today(),
                'del_post': del_post,
+               'pages': range(math.ceil(l / ppp)),
                }
     template = 'blog/index.html'
 
     return render(request, template, context)
 
 
+@login_required
 def update(request, pk):
     up_post = get_object_or_404(Post, pk=pk)
     update_form = NewPostForm(instance=up_post)
@@ -55,6 +59,7 @@ def update(request, pk):
     return render(request, template, context)
 
 
+@login_required
 def delete(request, pk):
     del_post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":

@@ -15,6 +15,15 @@
 {{ post_form.media }}
 {% endif %}
 
+<br />
+<ul id="pages">
+{% for p in pages %}
+<li><a class="button" href="{% url 'blog:index' p %}">{{ p }}</a></li>
+{% endfor %}
+</ul>
+<br />
+<br />
+
 {% if posts %}
 {% for post in posts %}
 <article>
@@ -38,6 +47,16 @@
 {% else %}
     <p> Inga inlägg finns publicerade ännu. </p>
 {% endif %}
+
+<br />
+<br />
+<ul id="pages">
+{% for p in pages %}
+<li><a class="button" href="{% url 'blog:index' p %}">{{ p }}</a></li>
+{% endfor %}
+</ul>
+<br />
+<br />
 
 {% endblock %}
 
