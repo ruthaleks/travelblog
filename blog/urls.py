@@ -7,6 +7,6 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('<int:page_number>/', views.index, name='index'),
     path('gallery/', views.gallery, name='gallery'),
-    path('<int:pk>/delete/', views.delete, name='delete'),
-    path('<int:pk>/update/', views.update, name='update'),
+    path('delete/<int:pk>/', views.delete, name='delete'),
+    path('update/<int:pk>/', views.update, name='update'),
 ]

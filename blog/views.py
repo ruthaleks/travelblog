@@ -3,6 +3,7 @@ from PIL import Image
 from django.shortcuts import render, redirect, get_object_or_404
 from django.conf import settings
 from django.utils import timezone
+from django.contrib.auth.decorators import login_required
 
 from .models import Post
 from .forms import NewPostForm, ImageUploadForm, DeletePost
@@ -39,6 +40,7 @@ def index(request, page_number=0):
     return render(request, template, context)
 
 
+@login_required
 def update(request, pk):
     up_post = get_object_or_404(Post, pk=pk)
     update_form = NewPostForm(instance=up_post)
@@ -57,6 +59,7 @@ def update(request, pk):
     return render(request, template, context)
 
 
+@login_required
 def delete(request, pk):
     del_post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":

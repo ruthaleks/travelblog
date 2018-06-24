@@ -4,10 +4,18 @@
 
 {% block content %}
 
-<form method='post'>
-    {% csrf_token %}
-    {{ form }}
-    <button type='submit'>Login</button>
-</form>
+<br />
+<br />
+<article>
+    <div id="login">
+        <form method='post'>
+            {% csrf_token %}
+            {{ form }}
+            <br />
+            <br />
+            <button type='submit' class="button">Logga in</button>
+        </form>
+    </div>
+</article>
 
 {% endblock %}

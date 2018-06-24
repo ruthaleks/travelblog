@@ -192,6 +192,19 @@ select, input[type=submit]{
     transition: all 0.3s;
 }
 
+img {
+    max-width: 100%;
+}
+
+/* Login form */
+#login {
+    padding: 12px 25%;
+}
+
+#login input {
+    width: 100%;
+}
+
 /* Responsive design -------------------------------------------*/
 
 @media only screen and (min-width: 1024px) {
