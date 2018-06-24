@@ -24,9 +24,9 @@
     <div class="content-box">
         {{ post.formatted_markdown|safe }}
 
+        <br />
         {% if user.is_authenticated %}
-        <a href = "{% url 'blog:update' post.pk %}">Uppdatera</a>
-        </form>
+        <a href = "{% url 'blog:update' post.pk %}" class="button">Uppdatera</a>
         {% endif %}
         <div class="sign">
             <p> {{ post.author.first_name }} {{post.author.last_name}}
