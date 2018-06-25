@@ -19,8 +19,9 @@ from django.conf import settings
 from django.urls import path, include, re_path
 
 urlpatterns = [
-    path('travelblog/', include('blog.urls')),
+    #path('travelblog/', include('blog.urls')),
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
     re_path(r'^markdownx/', include('markdownx.urls')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + [path('', include('blog.urls'))]
+

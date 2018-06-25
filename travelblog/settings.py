@@ -30,6 +30,8 @@ ALLOWED_HOSTS = [
         'localhost',
         '192.168.1.100',
         '192.168.1.5',
+        'martennilsson.se',
+        'www.martennilsson.se',
         ]
 
 
@@ -126,6 +128,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = '/mnt/hdd/static/'
 
 MEDIA_ROOT = 'media/'
 MEDIA_URL = '/media/'
