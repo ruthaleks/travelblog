@@ -17,7 +17,7 @@ from datetime import datetime
 
 def index(request, page_number=0):
     ppp = 5;
-    posts = Post.objects.order_by('-travel_date')[page_number*ppp:(page_number + 1)*ppp]
+    posts = Post.objects.order_by('-travel_date', '-pub_date')[page_number*ppp:(page_number + 1)*ppp]
     l = Post.objects.all().count()
     if request.method == 'POST':
         post_author = request.user
