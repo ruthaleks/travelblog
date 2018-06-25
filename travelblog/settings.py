@@ -140,5 +140,5 @@ DATE_FORMAT = "Y-m-d"
 MARKDOWNX_MEDIA_PATH = datetime.now().strftime('markdownx/%Y/%m/%d')
 
 # Login redirect
-LOGIN_REDIRECT_URL = '/travelblog/'
-LOGOUT_REDIRECT_URL = '/travelblog/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
