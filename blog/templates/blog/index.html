@@ -39,7 +39,8 @@
         {% endif %}
         <div class="sign">
             <p> {{ post.author.first_name }} {{post.author.last_name}}
-            <br /> {{ post.pub_date.date | date:"Y-m-d"}} </p>
+            <br /> {{ post.pub_date | date:"Y-m-d"}},
+            {{ post.pub_date | time:"H:i" }} </p>
         </div>
     </div>
 </article>
