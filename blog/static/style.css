@@ -84,7 +84,7 @@ article, #newpost {
 }
 
 .content-box{
-    padding: 12px 36px;
+    padding: 12px 12px;
     overflow: auto;
 }
 
@@ -211,6 +211,11 @@ img {
     article, #newpost {
         max-width: 80%;
         margin: auto;
+    }
+
+    .content-box{
+        padding: 12px 36px;
+        overflow: auto;
     }
 }
 
