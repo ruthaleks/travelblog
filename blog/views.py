@@ -72,7 +72,7 @@ def gallery(request):
         f = request.FILES["file"]
         _save_uploaded_image(f)
 
-    images = _get_images_ending_with(".jpg") + _get_images_ending_with(".png") + _get_images_ending_with(".jpeg")
+    images = _get_images_ending_with(".jpg") + _get_images_ending_with(".png") + _get_images_ending_with(".jpeg") + _get_images_ending_with(".gif")
 
     _generate_thumbnails(images)
 
